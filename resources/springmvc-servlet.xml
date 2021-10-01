@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           id="internalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/" />
         <property name="suffix" value=".jsp" />
@@ -17,7 +17,7 @@
     
     
     <!--  解決中文 與 JSR 303 Validator 設定 -->
-	<mvc:annotation-driven>
+    <mvc:annotation-driven>
 		<mvc:message-converters
 			register-defaults="true">
 			<bean
@@ -29,9 +29,9 @@
 				</property>
 			</bean>
 		</mvc:message-converters>
-	</mvc:annotation-driven>
+    </mvc:annotation-driven>
 	
-	<!-- SpringData-JPA 配置 -->
+    <!-- SpringData-JPA 配置 -->
     <import resource="classpath:springdata-jpa-config.xml"></import>
     
 </beans>
