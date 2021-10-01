@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	OK
+	Hello JPA
 </body>
 </html>
