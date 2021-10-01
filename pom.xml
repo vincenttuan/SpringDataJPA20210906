@@ -3,12 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>SpringData_T</groupId>
-	<artifactId>SpringData_T</artifactId>
+	<groupId>SpringDataJPA20210906</groupId>
+	<artifactId>SpringDataJPA20210906</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>SpringData_T</name>
-	<description>SpringData_T</description>
+	<name>SpringDataJPA20210906</name>
+	<description>SpringDataJPA20210906</description>
 
 	<properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
