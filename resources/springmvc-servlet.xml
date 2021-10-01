@@ -16,7 +16,7 @@
     </bean>
     
     
-    <!--  解決中文 與 JSR 303 Validator 設定 -->
+    <!--  解決中文 -->
     <mvc:annotation-driven>
 		<mvc:message-converters
 			register-defaults="true">
