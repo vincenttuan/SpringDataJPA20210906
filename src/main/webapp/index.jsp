@@ -5,9 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	location.href = './mvc/user/';
-</script>
 </head>
 <body>
 	OK
