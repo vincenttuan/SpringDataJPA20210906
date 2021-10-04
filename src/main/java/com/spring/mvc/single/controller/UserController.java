@@ -113,8 +113,13 @@ public class UserController {
 	public List<User> testPage(@PathVariable("no") Integer no) {
 		int pageNo = no;
 		int pageSize = 10;
+		// 排序
+		Sort.Order order1 = new Sort.Order(Sort.Direction.ASC, "name");
+		Sort.Order order2 = new Sort.Order(Sort.Direction.DESC, "id");
+		Sort sort = new Sort(order1, order2);
+		
 		// 分頁請求
-		PageRequest pageRequest = new PageRequest(pageNo, pageSize);
+		PageRequest pageRequest = new PageRequest(pageNo, pageSize, sort);
 		Page<User> page = userRepository.findAll(pageRequest);
 		return page.getContent();
 	}
