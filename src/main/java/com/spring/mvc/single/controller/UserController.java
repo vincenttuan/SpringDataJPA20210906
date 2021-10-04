@@ -7,9 +7,12 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -88,13 +91,33 @@ public class UserController {
 	public List<User> testFindallExample2() {
 		User user = new User();
 		user.setName("a");
-		// 欄位 name 的內容是否有包含 "a" 
+		// 欄位 name 的內容是否有包含 "a"
 		// 建立 ExampleMatcher 比對器
-		ExampleMatcher matcher = ExampleMatcher.matching()
-				.withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains());
+		ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("name",
+				ExampleMatcher.GenericPropertyMatchers.contains());
 		Example<User> example = Example.of(user, matcher);
 		List<User> users = userRepository.findAll(example);
 		return users;
 	}
+
+	// 查詢範例資料 6
+	@GetMapping("/test/find_one")
+	@ResponseBody
+	public User findOne() {
+		return userRepository.findOne(3L);
+	}
+	
+	// 查詢分頁
+	@GetMapping("/test/page/{no}")
+	@ResponseBody
+	public List<User> testPage(@PathVariable("no") Integer no) {
+		int pageNo = no;
+		int pageSize = 10;
+		// 分頁請求
+		PageRequest pageRequest = new PageRequest(pageNo, pageSize);
+		Page<User> page = userRepository.findAll(pageRequest);
+		return page.getContent();
+	}
+	
 
 }
