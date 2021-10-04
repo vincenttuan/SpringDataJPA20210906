@@ -154,5 +154,8 @@ public class UserController {
 	public List<User> getByBirthLessThan(@RequestParam("birth") @DateTimeFormat(iso = ISO.DATE) Date birth) {
 		return userRepository.getByBirthLessThan(birth);
 	}
-
+	
+	// 測試 url: /mvc/user/test/birth_between?begin=1965-1-1&end=1970-12-31
+	// 請撰寫並測試
+	
 }
