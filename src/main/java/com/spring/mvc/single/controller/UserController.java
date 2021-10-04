@@ -1,5 +1,6 @@
 package com.spring.mvc.single.controller;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	// 新增範例資料
 	@GetMapping("/test/create_sample_data")
 	@ResponseBody
 	public String testCreateSampleData() {
@@ -33,6 +35,14 @@ public class UserController {
 			userRepository.saveAndFlush(user);
 		}
 		return "Create sample data ok !";
+	}
+	
+	// 查詢範例資料
+	@GetMapping("/test/findall")
+	@ResponseBody
+	public List<User> testFindall() {
+		List<User> users = userRepository.findAll();
+		return users;
 	}
 	
 }
