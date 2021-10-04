@@ -20,5 +20,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	// Where name LIKE ? AND id >= ?
 	List<User> getByNameStartingWithAndIdGreaterThanEqual(String name, Long id);
 	
-	
+	// Where id in (?, ?, ?)
+	List<User> getByIdIn(List<Long> ids);
 }

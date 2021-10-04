@@ -107,7 +107,7 @@ public class UserController {
 	public User findOne() {
 		return userRepository.findOne(3L);
 	}
-	
+
 	// 查詢分頁
 	@GetMapping("/test/page/{no}")
 	@ResponseBody
@@ -118,25 +118,31 @@ public class UserController {
 		Sort.Order order1 = new Sort.Order(Sort.Direction.ASC, "name");
 		Sort.Order order2 = new Sort.Order(Sort.Direction.DESC, "id");
 		Sort sort = new Sort(order1, order2);
-		
+
 		// 分頁請求
 		PageRequest pageRequest = new PageRequest(pageNo, pageSize, sort);
 		Page<User> page = userRepository.findAll(pageRequest);
 		return page.getContent();
 	}
-	
+
 	@GetMapping("/test/name")
 	@ResponseBody
 	public List<User> getByName(@RequestParam("name") String name) {
 		return userRepository.getByName(name);
 	}
-	
+
 	// 測試 url: /mvc/user/test/name/id/S/50
 	@GetMapping("/test/name/id/{name}/{id}")
 	@ResponseBody
-	public List<User> getByNameAndID(@PathVariable("name") String name,
-									 @PathVariable("id") Long id) {
+	public List<User> getByNameAndID(@PathVariable("name") String name, @PathVariable("id") Long id) {
 		return userRepository.getByNameStartingWithAndIdGreaterThanEqual(name, id);
+	}
+
+	// 測試 url: /mvc/user/test/ids?ids=5,10,15
+	@GetMapping("/test/ids")
+	@ResponseBody
+	public List<User> getByIds(@RequestParam("ids") List<Long> ids) {
+		return userRepository.getByIdIn(ids);
 	}
 
 }
