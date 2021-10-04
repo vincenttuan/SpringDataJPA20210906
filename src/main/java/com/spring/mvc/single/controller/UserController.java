@@ -130,5 +130,13 @@ public class UserController {
 	public List<User> getByName(@RequestParam("name") String name) {
 		return userRepository.getByName(name);
 	}
+	
+	// 測試 url: /mvc/user/test/name/id/S/50
+	@GetMapping("/test/name/id/{name}/{id}")
+	@ResponseBody
+	public List<User> getByNameAndID(@PathVariable("name") String name,
+									 @PathVariable("id") Long id) {
+		return userRepository.getByNameStartingWithAndIdGreaterThanEqual(name, id);
+	}
 
 }

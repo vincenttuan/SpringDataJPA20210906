@@ -16,4 +16,9 @@ import com.spring.mvc.single.entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	// 根據 name 來取得 User
 	List<User> getByName(String name);
+	
+	// Where name LIKE ? AND id >= ?
+	List<User> getByNameStartingWithAndIdGreaterThanEqual(String name, Long id);
+	
+	
 }
