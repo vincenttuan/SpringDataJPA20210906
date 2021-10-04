@@ -1,5 +1,6 @@
 package com.spring.mvc.single.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -53,6 +54,16 @@ public class UserController {
 		// ASC 自然排序 小->大, DESC 大->小
 		Sort sort = new Sort(Sort.Direction.ASC, "name");
 		List<User> users = userRepository.findAll(sort);
+		return users;
+	}
+
+	// 查詢範例資料 3
+	@GetMapping("/test/findall_ids")
+	@ResponseBody
+	public List<User> testFindallIds() {
+		// 查找指定 id 的資料
+		Iterable<Long> ids = Arrays.asList(1L, 3L, 5L);
+		List<User> users = userRepository.findAll(ids);
 		return users;
 	}
 
