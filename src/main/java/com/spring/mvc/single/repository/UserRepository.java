@@ -1,5 +1,6 @@
 package com.spring.mvc.single.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +23,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 	// Where id in (?, ?, ?)
 	List<User> getByIdIn(List<Long> ids);
+	
+	// Where birth < ?
+	List<User> getByBirthLessThan(Date birth);
+	
+	
 }

@@ -1,6 +1,7 @@
 package com.spring.mvc.single.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -10,6 +11,8 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -143,6 +146,13 @@ public class UserController {
 	@ResponseBody
 	public List<User> getByIds(@RequestParam("ids") List<Long> ids) {
 		return userRepository.getByIdIn(ids);
+	}
+
+	// 測試 url: /mvc/user/test/birth?birth=1965-9-9
+	@GetMapping("/test/birth")
+	@ResponseBody
+	public List<User> getByBirthLessThan(@RequestParam("birth") @DateTimeFormat(iso = ISO.DATE) Date birth) {
+		return userRepository.getByBirthLessThan(birth);
 	}
 
 }
