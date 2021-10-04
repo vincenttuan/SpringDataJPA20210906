@@ -156,6 +156,10 @@ public class UserController {
 	}
 	
 	// 測試 url: /mvc/user/test/birth_between?begin=1965-1-1&end=1970-12-31
-	// 請撰寫並測試
-	
+	@GetMapping("/test/birth_between")
+	@ResponseBody
+	public List<User> getByBirthBetween(@RequestParam("begin") @DateTimeFormat(iso = ISO.DATE) Date begin,
+										@RequestParam("end") @DateTimeFormat(iso = ISO.DATE) Date end) {
+		return userRepository.getByBirthBetween(begin, end);
+	}
 }
