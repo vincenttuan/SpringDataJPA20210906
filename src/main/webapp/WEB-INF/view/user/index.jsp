@@ -71,7 +71,11 @@
 											onclick="location.href='${ pageContext.request.contextPath }/mvc/user/${ user.id }';"
 											class="pure-button pure-button-primary">Edit</button>
 									</td>
-									<td>Delete</td>
+									<td>
+										<button type="button"
+											onclick="alert('Homework');"
+											class="pure-button pure-button-primary">Delete</button>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
