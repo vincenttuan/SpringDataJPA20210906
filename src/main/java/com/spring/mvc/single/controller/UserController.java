@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +33,8 @@ public class UserController {
 	
 	// User 資料維護首頁
 	@GetMapping(value = {"/", "/index"})
-	public String index() {
-		
+	public String index(Model model) {
+		model.addAttribute("user", new User());
 		return "user/index"; // 重導到 /WEB-INF/view/user/index.jsp
 	}
 	

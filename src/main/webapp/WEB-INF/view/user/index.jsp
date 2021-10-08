@@ -6,7 +6,7 @@
     <!-- Head -->
     <%@include file="../include/head.jspf" %>
 </head>
-<body>
+<body style="padding: 20px">
 
 <div id="layout">
     <!-- Menu toggle -->
@@ -24,7 +24,24 @@
 		<table>
 			<td valign="top">
 				<!-- User 表單 -->
-				
+				<form:form class="pure-form"
+						   modelAttribute="user"
+						   method="POST"
+						   action="${ pageContext.request.contextPath }/mvc/user/">
+					<fieldset>
+						<legend>User form</legend>
+						<form:input path="id" readonly="true" /><p />
+						<form:input path="name" placeholder="請輸入使用者名稱" /><p />
+						<form:input path="password" placeholder="請輸入密碼" /><p />
+						<form:input path="birth" type="date" /><p />
+						
+						<button type="submit" 
+								class="pure-button pure-button-primary">Submit</button>
+						<button type="reset"
+								class="pure-button pure-button-primary">Reset</button>
+					</fieldset>
+					
+				</form:form>
 			</td>
 			<td valign="top">
 				<!-- User 列表 -->
