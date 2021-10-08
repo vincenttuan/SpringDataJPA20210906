@@ -34,7 +34,9 @@ public class UserController {
 	// User 資料維護首頁
 	@GetMapping(value = {"/", "/index"})
 	public String index(Model model) {
+		List<User> users = userRepository.findAll();
 		model.addAttribute("user", new User());
+		model.addAttribute("users", users);
 		return "user/index"; // 重導到 /WEB-INF/view/user/index.jsp
 	}
 	
