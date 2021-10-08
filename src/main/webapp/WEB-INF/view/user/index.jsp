@@ -65,7 +65,11 @@
 									<td>${ user.name }</td>
 									<td>${ user.password }</td>
 									<td>${ user.birth }</td>
-									<td>Edit</td>
+									<td>
+										<button type="button"
+											onclick="location.href='${ pageContext.request.contextPath }/mvc/user/${ user.id }';"
+											class="pure-button pure-button-primary">Edit</button>
+									</td>
 									<td>Delete</td>
 								</tr>
 							</c:forEach>
