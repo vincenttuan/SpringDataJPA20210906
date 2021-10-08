@@ -45,6 +45,33 @@
 			</td>
 			<td valign="top">
 				<!-- User 列表 -->
+				<form class="pure-form">
+					<fieldset>User List</fieldset>
+					<table class="pure-table pure-table-bordered">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Password</th>
+								<th>Birth</th>
+								<th>Update</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="user" items="${ users }">
+								<tr>
+									<td>${ user.id }</td>
+									<td>${ user.name }</td>
+									<td>${ user.password }</td>
+									<td>${ user.birth }</td>
+									<td>Edit</td>
+									<td>Delete</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</form>
 			</td>
 		</table>
         
