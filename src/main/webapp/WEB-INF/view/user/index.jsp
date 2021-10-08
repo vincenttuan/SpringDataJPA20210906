@@ -34,7 +34,8 @@
 						<form:input path="name" placeholder="請輸入使用者名稱" /><p />
 						<form:input path="password" placeholder="請輸入密碼" /><p />
 						<form:input path="birth" type="date" /><p />
-						
+						<input type="text" id="_method" name="_method"
+							   readonly="true" value="${ _method }" /><p />
 						<button type="submit" 
 								class="pure-button pure-button-primary">Submit</button>
 						<button type="reset"

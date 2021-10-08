@@ -42,6 +42,7 @@ public class UserController {
 		List<User> users = userRepository.findAll();
 		model.addAttribute("user", new User());
 		model.addAttribute("users", users);
+		model.addAttribute("_method", "POST");
 		return "user/index"; // 重導到 /WEB-INF/view/user/index.jsp
 	}
 	
@@ -73,6 +74,7 @@ public class UserController {
 		List<User> users = userRepository.findAll();
 		model.addAttribute("user", user);
 		model.addAttribute("users", users);
+		model.addAttribute("_method", "PUT");
 		return "user/index"; // 重導到 /WEB-INF/view/user/index.jsp
 	}
 	
