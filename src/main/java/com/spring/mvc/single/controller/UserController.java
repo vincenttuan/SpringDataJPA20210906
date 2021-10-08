@@ -50,6 +50,7 @@ public class UserController {
 	@PostMapping(value = "/")
 	public String create(User user) {
 		userRepository.save(user);
+		System.out.println("User create: " + user);
 		return "redirect: ./";
 	}
 	
@@ -57,6 +58,7 @@ public class UserController {
 	@PutMapping(value = "/")
 	public String update(User user) {
 		userRepository.saveAndFlush(user);
+		System.out.println("User update: " + user);
 		return "redirect: ./";
 	}
 	
