@@ -29,7 +29,17 @@ import com.spring.mvc.single.repository.UserRepository;
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	// User 資料維護首頁
+	@GetMapping(value = {"/", "/index"})
+	public String index() {
+		
+		return "user/index"; // 重導到 /WEB-INF/view/user/index.jsp
+	}
+	
+	// ------------------------------------------------
+	// 以下是測試 User 的程式
+	
 	// 新增範例資料
 	@GetMapping("/test/create_sample_data")
 	@ResponseBody
