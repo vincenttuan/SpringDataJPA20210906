@@ -27,7 +27,10 @@
 				<!-- User 表單 -->
 				<form class="pure-form">
 					<fieldset>User Form</fieldset>
-					
+					ID：<input type="text" ng-model="id"><p />
+					Name：<input type="text" ng-model="name"><p />
+					Password：<input type="text" ng-model="password"><p />
+					Birth：<input type="text" ng-model="birth"><p />
 				</form>
 			</td>
 			<td valign="top">
@@ -51,7 +54,7 @@
 								<td>{{ user.password }}</td>
 								<td>{{ user.birth }}</td>
 								<td>
-									<button>Edit</button>
+									<button ng-click="edit(user.id)">Edit</button>
 								</td>
 							</tr>
 						</tbody>
@@ -80,9 +83,28 @@
 			});
 	}
 	
+	// 編輯
+	function editUser($scope, $http, id) {
+		var url = "${ pageContext.request.contextPath }/mvc/rest/user/" + id;
+		$http.get(url)
+			.success(function(resp) {
+				var user = resp;
+				$scope.id = user.id;
+				$scope.name = user.name;
+				$scope.password = user.password;
+				$scope.birth = user.birth;
+			}).error(function(e) {
+				alert(e);
+			});
+	}
+	
 	var func = function($scope, $http) { // 功能
 		// 查詢
 		queryUsers($scope, $http);
+		// 編輯
+		$scope.edit = function(id) {
+			editUser($scope, $http, id);
+		};
 	};
 	
 	app.controller("userController", func);
