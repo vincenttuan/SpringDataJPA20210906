@@ -29,7 +29,7 @@ public class UserRestController {
 	@GetMapping("/")
 	public List<User> queryAll() {
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
-		List<User> users = userRepository.findAll();
+		List<User> users = userRepository.findAll(sort);
 		return users;
 	}
 	

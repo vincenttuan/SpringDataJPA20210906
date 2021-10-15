@@ -31,6 +31,7 @@
 					Name：<input type="text" ng-model="name"><p />
 					Password：<input type="text" ng-model="password"><p />
 					Birth：<input type="text" ng-model="birth"><p />
+					<button ng-click="create()">Create</button>
 					<button ng-click="update()">Update</button>
 				</form>
 			</td>
@@ -99,6 +100,28 @@
 			});
 	}
 	
+	// 新增
+	function createUser($scope, $http) {
+		var url = "${ pageContext.request.contextPath }/mvc/rest/user/";
+		var obj = {};
+		obj["id"] = $scope.id;
+		obj["name"] = $scope.name;
+		obj["password"] = $scope.password;
+		obj["birth"] = $scope.birth;
+		var json = JSON.stringify(obj); // 物件轉 json 字串
+		$http({
+				method : 'POST',
+				url : url,
+				data : json,
+				headers : { 'Content-Type' : 'application/json' }
+		    }).success(function(resp){
+		    	alert('新增成功');
+				queryUsers($scope, $http);
+			}).error(function(e) {
+				alert('新增失敗: ' + e);
+			});
+	}
+	
 	// 修改
 	function updateUser($scope, $http) {
 		var url = "${ pageContext.request.contextPath }/mvc/rest/user/";
@@ -127,6 +150,10 @@
 		// 編輯(取得指定單筆資料)
 		$scope.edit = function(id) {
 			editUser($scope, $http, id);
+		};
+		// 新增
+		$scope.create = function() {
+			createUser($scope, $http);
 		};
 		// 修改
 		$scope.update = function() {
