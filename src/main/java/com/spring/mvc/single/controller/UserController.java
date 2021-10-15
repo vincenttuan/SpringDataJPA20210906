@@ -91,6 +91,25 @@ public class UserController {
 		return "user/index"; // 重導到 /WEB-INF/view/user/index.jsp
 	}
 
+	// 查詢分頁
+	// 路徑範例：/page, /page?no=1, /page?no=10 etc...
+	@GetMapping("/page")
+	public String userPage(Model model, 
+				@RequestParam(name = "no", required = false, defaultValue="0") Integer no) {
+		int pageNo = no;
+		int pageSize = 10;
+		// 排序
+		Sort.Order order = new Sort.Order(Sort.Direction.DESC, "id");
+		Sort sort = new Sort(order);
+
+		// 分頁請求
+		PageRequest pageRequest = new PageRequest(pageNo, pageSize, sort);
+		Page<User> page = userRepository.findAll(pageRequest);
+		model.addAttribute("users", page.getContent());
+		model.addAttribute("totalPges", page.getTotalPages());
+		return "user/page"; // 重導到 /WEB-INF/view/user/page.jsp
+	}
+
 	// ------------------------------------------------
 	// 以下是測試 User 的程式
 
