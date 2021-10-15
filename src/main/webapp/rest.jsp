@@ -41,10 +41,19 @@
 								<th>Name</th>
 								<th>Password</th>
 								<th>Birth</th>
+								<th>Edit</th>
 							</tr>
 						</thead>
 						<tbody>
-							
+							<tr ng-repeat="user in users">
+								<td>{{ user.id }}</td>
+								<td>{{ user.name }}</td>
+								<td>{{ user.password }}</td>
+								<td>{{ user.birth }}</td>
+								<td>
+									<button>Edit</button>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</form>
