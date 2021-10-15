@@ -29,9 +29,9 @@
 						   action="${ pageContext.request.contextPath }/mvc/user/page">
 					
 					<select name="no" onchange="this.form.submit()">
-						<option value="0">1</option>
-						<option value="1">2</option>
-						<option value="2">3</option>
+						<c:forEach var="no" begin="0" end="${ totalPage - 1 }">
+							<option value="${ no }" ${ no == pageNo ? "selected" : "" } >${ no+1 }</option>
+						</c:forEach>
 					</select>
 					
 				</form>

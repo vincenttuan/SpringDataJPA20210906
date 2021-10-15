@@ -106,7 +106,8 @@ public class UserController {
 		PageRequest pageRequest = new PageRequest(pageNo, pageSize, sort);
 		Page<User> page = userRepository.findAll(pageRequest);
 		model.addAttribute("users", page.getContent());
-		model.addAttribute("totalPges", page.getTotalPages());
+		model.addAttribute("pageNo", no);
+		model.addAttribute("totalPage", page.getTotalPages());
 		return "user/page"; // 重導到 /WEB-INF/view/user/page.jsp
 	}
 
