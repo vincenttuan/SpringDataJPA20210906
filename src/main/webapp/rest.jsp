@@ -33,6 +33,7 @@
 					Birth：<input type="text" ng-model="birth"><p />
 					<button ng-click="create()">Create</button>
 					<button ng-click="update()">Update</button>
+					<button ng-click="del()">Delete</button>
 				</form>
 			</td>
 			<td valign="top">
@@ -144,6 +145,20 @@
 			});
 	}
 	
+	// 刪除
+	function delUser($scope, $http) {
+		var url = "${ pageContext.request.contextPath }/mvc/rest/user/" + $scope.id;
+		$http({
+				method : 'DELETE',
+				url : url
+		    }).success(function(resp){
+		    	alert('刪除成功');
+				queryUsers($scope, $http);
+			}).error(function(e) {
+				alert('刪除失敗: ' + e);
+			});
+	}
+	
 	var func = function($scope, $http) { // 功能
 		// 查詢
 		queryUsers($scope, $http);
@@ -158,6 +173,10 @@
 		// 修改
 		$scope.update = function() {
 			updateUser($scope, $http);
+		};
+		// 刪除
+		$scope.del = function() {
+			delUser($scope, $http);
 		};
 	};
 	
